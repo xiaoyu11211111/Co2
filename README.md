@@ -28,6 +28,11 @@ python -m unittest discover -s tests -t . -v
 
 * Goods subtotal = sum of `unit_price * quantity` for every line.
 * Shipping is free for orders of £50.00 or more, otherwise a flat £4.99.
+* Students get 10% off the goods subtotal (`apply_student_discount()`). The
+  free-shipping threshold is still measured on the undiscounted subtotal, so
+  using the discount never costs a student their free shipping.
+* Money is rounded half up to cents, and the discount is computed with
+  `Decimal` so no floating point noise reaches the order total.
 * `checkout()` returns a small order summary dictionary instead of touching a
   database, so the rules can be tested in isolation.
 
