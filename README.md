@@ -40,3 +40,30 @@ python -m unittest discover -s tests -t . -v
 
 Do not commit directly to `main`.  Create a short-lived feature branch, add
 tests for the behaviour you change, and open a Pull Request for review.
+
+## Branching and review workflow
+
+Every branch is a short-lived topic branch that becomes exactly one Pull
+Request.  `main` is only ever advanced by merging an approved PR.
+
+| Branch | Purpose | Review state |
+| --- | --- | --- |
+| `main` | Baseline: cart and checkout, no student discount. | protected |
+| `add-discount` | Feature: 10% student discount at checkout. | ready for review |
+| `add-tests` | Extra edge-case tests requested during review. | open |
+| `add-docs` | Documentation: PR template and review checklist. | open |
+
+The rules the team agreed on:
+
+1. Never commit to `main` directly; open a PR instead.
+2. One topic per branch, one branch per PR.
+3. A PR needs at least one constructive review comment and an approval before
+   it is merged.
+4. Merge only when the full test suite passes locally (and in CI, once there is
+   one).
+
+Supporting documents:
+
+* `docs/pull-request-template.md` - fill this in for every PR.
+* `docs/review-checklist.md` - what the reviewer and tester check before
+  approving.
